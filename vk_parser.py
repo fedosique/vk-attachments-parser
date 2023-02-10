@@ -10,12 +10,11 @@ def loading(load_from, img_num):                                 ## выгруз
         out.write(load.content)
         out.close()
 
+folder = "758476599"
+link = []
 
 messages = 0
 epoch = 1
-
-folder = "758476599"
-link = []
 
 while messages <= 22050: 
     source = "./{}/messages{}.html".format(folder, messages)
