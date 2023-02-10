@@ -3,17 +3,19 @@ from bs4 import BeautifulSoup
 import re, requests
 import pandas as pd
 
+
 def loading(load_from, img_num):                                 ## выгрузка фотографий
         load = requests.get(load_from.text)                      ## в будущем можно добавить multithreading
         out = open(".\img{}.jpg".format(img_num), 'wb')
         out.write(load.content)
         out.close()
 
-link = []
+
 messages = 0
 epoch = 1
 
 folder = "758476599"
+link = []
 
 while messages <= 22050: 
     source = "./{}/messages{}.html".format(folder, messages)
