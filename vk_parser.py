@@ -33,20 +33,20 @@ while messages < files*50:
     source = "./{}/messages{}.html".format(folder, messages)
     file = open(source, "r")
     page_response = bs4.BeautifulSoup(file.read(), "html.parser")
-    trs0 = page_response.find_all("a", class_="attachment__link")
+    trs0 = page_response.find_all("a")
     n = 1
     print("Текущая итерация: ", epoch, " | ", "пройдено сообщений: ", messages)
     for n, i in enumerate(trs0, start=n):
         trs = page_response.find("a", class_="attachment__link")
-        if "https://vk" in str(trs):                             ## в ссылку vk попадают документы и видео
+        if "https://vk" in trs:                             ## в ссылку vk попадают документы и видео
             pass
         else:
+            link.append(trs.text.strip())
             loading(trs, epoch)
-            link.append(trs.text)
     file.close()
     messages += 50
     epoch += 1
 
-df = pd.DataFrame(set(link))                                     ## distinct значения
+df = pd.DataFrame(link)                                     ## distinct значения
 df.to_csv('links.csv', index=False)
 
