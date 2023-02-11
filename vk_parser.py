@@ -47,6 +47,6 @@ while messages < files*50:
     messages += 50
     epoch += 1
 
-df = pd.DataFrame(link)                                     ## distinct значения
+df = pd.DataFrame(set(link))                                     ## distinct значения
 df.to_csv('links.csv', index=False)
 
