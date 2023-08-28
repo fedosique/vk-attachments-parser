@@ -20,14 +20,9 @@ link = []
 messages = 0
 epoch = 1
 
-
-def file_counter():
-        folder_name = Path(folder)
+folder_name = Path(folder)
         if folder_name.is_dir():
-            return len([1 for file in folder_name.iterdir()])
-
-
-files = file_counter()
+                files = len([1 for file in folder_name.iterdir()])
 
 while messages < files*50: 
     source = "./{}/messages{}.html".format(folder, messages)
